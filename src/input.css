@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    @media (orientation:portrait) {
+        .portrait-justify-center {
+            justify-content: center;
+        }
+
+        .portrait-display-none {
+            display: none;
+        }
+    }
+
+    @media (orientation:landscape) and (max-width:1024px) {
+        .landscape-justify-space-between {
+            justify-content: space-between;
+        }
+
+        .landscape-display-block {
+            display: block;
+        }
+
+        .landscape-height-7 {
+            height: 1.5rem;
+        }
+    }
+}
