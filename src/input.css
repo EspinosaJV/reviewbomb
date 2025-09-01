@@ -3,13 +3,22 @@
 @tailwind utilities;
 
 @layer utilities {
-    @media (orientation:portrait) {
+    @media (orientation:portrait) and (max-width:768px) {
         .portrait-justify-center {
             justify-content: center;
         }
 
         .portrait-display-none {
             display: none;
+        }
+
+        .portrait-display-block {
+            display: block;
+        }
+
+        .portrait-display-flex-col {
+            display: flex;
+            flex-direction: column;
         }
     }
 
