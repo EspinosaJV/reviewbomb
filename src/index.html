@@ -15,11 +15,11 @@
     <div id="reviewbomb-header" class="inline-block portrait-display-none landscape-justify-space-between h-24 bg-background sticky top-0 flex items-center justify-between px-16">
         <h1 id="reviewbomb-h1" class="lg:text-5xl text-3xl text-primary font-header uppercase font-bold">reviewbomb!</h1>
         <div id="reviewbomb-menu" class="relative">
-            <button id="reviewbomb-header-menubtn" aria-label="Menu Button">
+            <button class="js-reviewbomb-menu-btn" aria-label="Menu Button">
                 <img src="images/hamburger_icon.png" alt="Navigation Menu Hamburger Icon" class="block landscape-height-7 h-9 w-auto portrait-display-none landscape-display-block">
             </button>
             <!-- NAVIGATION MENU (DESKTOP VIEW) -->
-            <div id="reviewbomb-navigation-menu" class="portrait-display-none flex flex-col bg-foundation absolute top-full right-0 h-60 w-80 border-4 border-primary ">
+            <div id="reviewbomb-navigation-menu" class="hidden portrait-display-none flex flex-col bg-foundation absolute top-full right-0 h-60 w-80 border-4 border-primary">
                 <button class="js-top-bombs-btn flex items-center justify-center flex-grow hover:bg-background focus:bg-background hover:text-primary focus:text-primary uppercase font-header font-bold lg:text-3xl">top bombs</button>
                 <button class="js-recent-bombs-btn flex justify-center items-center flex-grow hover:bg-background focus:bg-background hover:text-primary focus:text-primary uppercase font-header font-bold lg:text-3xl">recent bombs</button>
                 <button class="js-genre-bombs-btn flex justify-center items-center flex-grow hover:bg-background focus:bg-background hover:text-primary focus:text-primary uppercase font-header font-bold lg:text-3xl">genre bombs</button>
@@ -37,7 +37,7 @@
         </div>
 
         <!-- NAVIGATION MENU (MOBILE PORTRAIT VIEW) -->
-        <div id="reviewbomb-navigation-menu-mobile-portrait" class="border-8 border-primary hidden portrait-display-flex-col flex-1 flex-grow">
+        <div id="reviewbomb-navigation-menu-mobile-portrait" class="hidden border-8 border-primary portrait-display-flex-col flex-1 flex-grow">
             <button class="js-top-bombs-btn w-full flex-1 items-center hover:bg-background focus:bg-background hover:text-primary focus:text-primary text-4xl uppercase font-header font-bold flex justify-center">top bombs</button>
             <button class="js-recent-bombs-btn w-full flex-1 items-center hover:bg-background focus:bg-background hover:text-primary focus:text-primary text-4xl uppercase font-header font-bold flex justify-center">recent bombs</button>
             <button class="js-genre-bombs-btn w-full flex-1 items-center hover:bg-background focus:bg-background hover:text-primary focus:text-primary text-4xl uppercase font-header font-bold flex justify-center">genre bombs</button>

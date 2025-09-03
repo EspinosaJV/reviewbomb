@@ -1,52 +1,68 @@
-export function showContentSections() {
-    console.log("Header button has been clicked!");
+export function handleTopBombsClick() {    
+    const isDesktop = window.matchMedia('(min-width: 1024px)');
+    const isMobilePortrait = window.matchMedia('(max-width: 1023px) and (orientation: portrait)');
+    const isMobileLandscape = window.matchMedia('(max-width: 1023px) and (orientation: landscape)');
+
+    if (isDesktop.matches) {
+        console.log("Top Bombs Button in desktop view has been clicked!");
+    } else if (isMobilePortrait.matches) {
+        console.log("Top Bombs Button in mobile portrait view has been clicked!");
+    } else if (isMobileLandscape.matches) {
+        console.log("Top Bombs Button in Mobile landscape view has been clicked!");
+    }
 }
 
-export function topBombsBtnDesktop() {
-    console.log("Top Bombs Button in desktop view has been clicked!");
+export function handleRecentBombsClick() {
+    const isDesktop = window.matchMedia('(min-width: 1024px)');
+    const isMobilePortrait = window.matchMedia('(max-width: 1023px) and (orientation: portrait)');
+    const isMobileLandscape = window.matchMedia('(max-width: 1023px) and (orientation: landscape)');
+
+    if (isDesktop.matches) {
+        console.log("Recent Bombs Button for the desktop view has been clicked!");
+    } else if (isMobilePortrait.matches) {
+        console.log("Recent Bombs Button for the mobile portrait view has been clicked!");
+    } else if (isMobileLandscape.matches) {
+        console.log("Recent Bombs Button for the mobile landscape view has been clicked!");
+    }
 }
 
-export function recentBombsBtnDesktop() {
-    console.log("Recent Bombs Button for the desktop view has been clicked!");
+export function handleGenreBombsClick() {
+    const isDesktop = window.matchMedia('(min-width: 1024px)');
+    const isMobilePortrait = window.matchMedia('(max-width: 1023px) and (orientation: portrait)');
+    const isMobileLandscape = window.matchMedia('(max-width: 1023px) and (orientation: landscape)');
+
+    if (isDesktop.matches) {
+        console.log("Genre Bombs Button in desktop view has been clicked!");
+    } else if (isMobilePortrait.matches) {
+        console.log("Genre Bombs Button in mobile portrait view has been clicked!");
+    } else if (isMobileLandscape.matches) {
+        console.log("Genre bombs Button in mobile landscape view has been clicked!");
+    }
 }
 
-export function genreBombsBtnDesktop() {
-    console.log("Genre Bombs Button in desktop view has been clicked!");
+export function handleMenuDropdownClick() {
+    const isDesktop = window.matchMedia('(min-width: 1024px)');
+    const isMobilePortrait = window.matchMedia('(max-width: 1023px) and (orientation: portrait)');
+    const isMobileLandscape = window.matchMedia('(max-width: 1023px) and (orientation: landscape)');
+    
+    const reviewBombNavigationMenuContainer = document.getElementById('reviewbomb-navigation-menu');
+    const isContainerHidden = reviewBombNavigationMenuContainer.classList.contains('hidden');
+
+    if (isDesktop.matches || isMobileLandscape.matches) {
+        reviewBombNavigationMenuContainer.classList.toggle('hidden');
+    }
 }
 
-export function allBombsBtnDesktop() {
-    console.log("All Bombs Button for the desktop view has been clicked!");
-}
+export function handleAllBombsClick() {
+    const isDesktop = window.matchMedia('(min-width: 1024px)');
+    const isMobilePortrait = window.matchMedia('(max-width: 1023px) and (orientation: portrait)');
+    const isMobileLandscape = window.matchMedia('(max-width: 1023px) and (orientation: landscape)');
 
-export function topBombsBtnMobilePortrait() {
-    console.log("Top Bombs Button in Mobile portrait view has been clicked!");
-}
-
-export function recentBombsBtnMobilePortrait() {
-    console.log("Recent Bombs Button in Mobile Portrait view has been clicked!");
-}
-
-export function genreBombsBtnMobilePortrait() {
-    console.log("Genre Bombs Button in Mobile Portrait view has been clicked!");
-}
-
-export function allBombsBtnMobilePortrait() {
-    console.log("All Bombs Button in Mobile Portrait view has been clicked!");
-}
-
-export function topBombsBtnMobileLandscape() {
-    console.log("Top Bombs Button in Mobile landscape view has been clicked!");
-}
-
-export function recentBombsBtnMobileLandscape() {
-    console.log("Recent Bombs Button in Mobile landscape view has been clicked!");
-}
-
-export function genreBombsBtnMobileLandscape() {
-    console.log("Genre Bombs Button in Mobile landscape view has been clicked!");
-}
-
-export function allBombsBtnMobileLandscape()
-{
-    console.log("All Bombs Button in Mobile landscape view has been clicked!");
+    if (isDesktop.matches) {
+        console.log("All Bombs Button in the desktop view has been clicked!");
+    } else if (isMobilePortrait.matches) {
+        console.log("All Bombs Button in mobile portrait view has been clicked!");
+    } else if (isMobileLandscape.matches) {
+        console.log("All Bombs Button in mobile landscape view has been clicked!");
+    }
 }
