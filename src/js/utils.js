@@ -50,6 +50,8 @@ export function handleMenuDropdownClick() {
 
     if (isDesktop.matches || isMobileLandscape.matches) {
         reviewBombNavigationMenuContainer.classList.toggle('hidden');
+    } else if (isMobilePortrait.matches) {
+        console.log("Mobile portrait view for menu dropdown is clicked");
     }
 }
 
