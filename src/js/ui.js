@@ -6,6 +6,7 @@ export function headerEventListeners() {
     const recentBombsBtn = document.querySelectorAll('.js-recent-bombs-btn');
     const genreBombsBtn = document.querySelectorAll('.js-genre-bombs-btn');
     const allBombsBtn = document.querySelectorAll('.js-all-bombs-btn');
+    const reviewBombBtn = document.querySelectorAll('.js-bomb-btn');
 
     topBombsBtn.forEach(button => {
         button.addEventListener('click', utils.handleTopBombsClick);
@@ -25,5 +26,9 @@ export function headerEventListeners() {
 
     headerMenuDropdownBtn.forEach(button => {
         button.addEventListener('click', utils.handleMenuDropdownClick);
+    })
+
+    reviewBombBtn.forEach(button => {
+        button.addEventListener('click', utils.handleBombClick);
     })
 }

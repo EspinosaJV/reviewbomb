@@ -68,3 +68,17 @@ export function handleAllBombsClick() {
         console.log("All Bombs Button in mobile landscape view has been clicked!");
     }
 }
+
+export function handleBombClick() {
+    const isDesktop = window.matchMedia('(min-width: 1024px)');
+    const isMobilePortrait = window.matchMedia('(max-width: 1023px) and (orientation: portrait)');
+    const isMobileLandscape = window.matchMedia('(max-width: 1023px) and (orientation: landscape)');
+
+    if (isDesktop.matches) {
+        console.log("Bombs review button in the desktop view has been clicked!");
+    } else if (isMobilePortrait.matches) {
+        console.log("Bombs review button in the mobile portrait view has been clicked!");
+    } else if (isMobileLandscape.matches) {
+        console.log("Bombs review button in the mobile landscape view has been clicked!");
+    }
+}
