@@ -7,6 +7,7 @@ export function headerEventListeners() {
     const genreBombsBtn = document.querySelectorAll('.js-genre-bombs-btn');
     const allBombsBtn = document.querySelectorAll('.js-all-bombs-btn');
     const reviewBombBtn = document.querySelectorAll('.js-bomb-btn');
+    const reviewBombHeaderMobileButton = document.getElementById('reviewbomb-header-banner-mobile-portrait');
 
     topBombsBtn.forEach(button => {
         button.addEventListener('click', utils.handleTopBombsClick);
@@ -31,4 +32,6 @@ export function headerEventListeners() {
     reviewBombBtn.forEach(button => {
         button.addEventListener('click', utils.handleBombClick);
     })
+
+    reviewBombHeaderMobileButton.addEventListener('click', utils.closeMobileNavigationMenu);
 }

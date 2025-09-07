@@ -46,13 +46,46 @@ export function handleMenuDropdownClick() {
     const isMobileLandscape = window.matchMedia('(max-width: 1023px) and (orientation: landscape)');
     
     const reviewBombNavigationMenuContainer = document.getElementById('reviewbomb-navigation-menu');
+    const reviewBombNavigationMenuContainerMobilePortrait = document.getElementById('reviewbomb-navigation-menu-mobile-portrait');
     const isContainerHidden = reviewBombNavigationMenuContainer.classList.contains('hidden');
+    const reviewBombHeroSection = document.getElementById('reviewbomb-hero-section-mobile-portrait');
+    const reviewBombCallToActionSection = document.getElementById('reviewbomb-call-to-action-section-mobile-portrait');
+    const reviewBombHeaderBanner = document.getElementById('reviewbomb-header');
 
     if (isDesktop.matches || isMobileLandscape.matches) {
         reviewBombNavigationMenuContainer.classList.toggle('hidden');
     } else if (isMobilePortrait.matches) {
-        console.log("Mobile portrait view for menu dropdown is clicked");
-    }
+        reviewBombNavigationMenuContainerMobilePortrait.classList.toggle('hidden');
+        reviewBombHeroSection.classList.toggle('hidden');
+        reviewBombCallToActionSection.classList.toggle('hidden');
+
+        convertMobileHeaderBannerToButton();
+    }   
+}
+
+export function convertMobileHeaderBannerToButton() {
+    const reviewBombHeaderBanner = document.getElementById('reviewbomb-header-banner-mobile-portrait');
+
+    reviewBombHeaderBanner.setAttribute('role', 'button');
+    reviewBombHeaderBanner.setAttribute('tabindex', '0');
+    reviewBombHeaderBanner.setAttribute('aria-expanded', 'true');
+    reviewBombHeaderBanner.setAttribute('aria-label', 'Close navigation menu');
+}
+
+export function closeMobileNavigationMenu() {   
+    const reviewBombNavigationMenuContainerMobilePortrait = document.getElementById('reviewbomb-navigation-menu-mobile-portrait');
+    const reviewBombHeroSection = document.getElementById('reviewbomb-hero-section-mobile-portrait');
+    const reviewBombCallToActionSection = document.getElementById('reviewbomb-call-to-action-section-mobile-portrait');
+    const reviewBombHeaderBanner = document.getElementById('reviewbomb-header-mobile-portrait');
+
+    reviewBombNavigationMenuContainerMobilePortrait.classList.toggle('hidden');
+    reviewBombHeroSection.classList.toggle('hidden');
+    reviewBombCallToActionSection.classList.toggle('hidden');
+
+    reviewBombHeaderBanner.removeAttribute('role');
+    reviewBombHeaderBanner.removeAttribute('tabindex');
+    reviewBombHeaderBanner.removeAttribute('aria-expanded');
+    reviewBombHeaderBanner.removeAttribute('aria-label');
 }
 
 export function handleAllBombsClick() {
