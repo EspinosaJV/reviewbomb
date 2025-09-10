@@ -30,6 +30,10 @@
             display: block;
         }
 
+        .landscape-display-flex {
+            display: flex;
+        }
+
         .landscape-height-7 {
             height: 1.5rem;
         }
