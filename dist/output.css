@@ -591,6 +591,10 @@ video {
   top: 100%;
 }
 
+.z-50 {
+  z-index: 50;
+}
+
 .mx-16 {
   margin-left: 4rem;
   margin-right: 4rem;
