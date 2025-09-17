@@ -3,10 +3,22 @@ export function handleTopBombsClick() {
     const isMobilePortrait = window.matchMedia('(max-width: 1023px) and (orientation: portrait)');
     const isMobileLandscape = window.matchMedia('(max-width: 1023px) and (orientation: landscape)');
 
+    const topBombsMobilePortrait = document.getElementById('topBombsMobilePortrait');
+    const recentBombsMobilePortrait = document.getElementById('recentBombsMobilePortrait');
+    const genreBombsMobilePortrait = document.getElementById('genreBombsMobilePortrait');
+    const allBombsMobilePortrait = document.getElementById('allBombsMobilePortrait');
+
     if (isDesktop.matches) {
         console.log("Top Bombs Button in desktop view has been clicked!");
     } else if (isMobilePortrait.matches) {
-        console.log("Top Bombs Button in mobile portrait view has been clicked!");
+        topBombsMobilePortrait.classList.add('portrait-display-flex');
+        topBombsMobilePortrait.classList.remove('hidden');
+        recentBombsMobilePortrait.classList.remove('portrait-display-flex');
+        recentBombsMobilePortrait.classList.add('hidden');
+        genreBombsMobilePortrait.classList.remove('portrait-display-flex');
+        genreBombsMobilePortrait.classList.add('hidden');
+        allBombsMobilePortrait.classList.remove('portrait-display-flex');
+        allBombsMobilePortrait.classList.add('hidden');
     } else if (isMobileLandscape.matches) {
         console.log("Top Bombs Button in Mobile landscape view has been clicked!");
     }
