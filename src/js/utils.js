@@ -85,6 +85,11 @@ export function handleGenreBombsClick() {
     const genreBombsMobilePortrait = document.getElementById('genreBombsMobilePortrait');
     const allBombsMobilePortrait = document.getElementById('allBombsMobilePortrait');
 
+    const topBombsMobileLandscape = document.getElementById('topBombsMobileLandscape');
+    const recentBombsMobileLandscape = document.getElementById('recentBombsMobileLandscape');
+    const genreBombsMobileLandscape = document.getElementById('genreBombsMobileLandscape');
+    const allBombsMobileLandscape = document.getElementById('allBombsMobileLandscape');
+
     if (isDesktop.matches) {
         console.log("Genre Bombs Button in desktop view has been clicked!");
     } else if (isMobilePortrait.matches) {
@@ -97,7 +102,14 @@ export function handleGenreBombsClick() {
         allBombsMobilePortrait.classList.remove('portrait-display-flex');
         allBombsMobilePortrait.classList.add('hidden');
     } else if (isMobileLandscape.matches) {
-        console.log("Genre bombs Button in mobile landscape view has been clicked!");
+        genreBombsMobileLandscape.classList.add('landscape-display-flex');
+        genreBombsMobileLandscape.classList.remove('hidden');
+        recentBombsMobileLandscape.classList.remove('landscape-display-flex');
+        recentBombsMobileLandscape.classList.add('hidden');
+        topBombsMobileLandscape.classList.remove('landscape-display-flex');
+        topBombsMobileLandscape.classList.add('hidden');
+        allBombsMobileLandscape.classList.remove('landscape-display-flex');
+        allBombsMobileLandscape.classList.add('hidden');
     }
 }
 
