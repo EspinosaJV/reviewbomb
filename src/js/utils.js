@@ -14,7 +14,7 @@ export function handleTopBombsClick() {
     const allBombsMobileLandscape = document.getElementById('allBombsMobileLandscape');
 
     if (isDesktop.matches) {
-        console.log("Top Bombs Button in desktop view has been clicked!");
+        document.querySelector('#topBombsDesktop').scrollIntoView({ behavior: 'smooth' });
     } else if (isMobilePortrait.matches) {
         topBombsMobilePortrait.classList.add('portrait-display-flex');
         topBombsMobilePortrait.classList.remove('hidden');
