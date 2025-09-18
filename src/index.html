@@ -21,7 +21,7 @@
             <!-- NAVIGATION MENU (DESKTOP VIEW) -->
             <div id="reviewbomb-navigation-menu" class="hidden portrait-display-none flex flex-col bg-foundation absolute top-full right-0 h-60 w-80 border-4 border-primary">
                 <button data-scroll-to="#topBombsDesktop" class="js-top-bombs-btn flex items-center justify-center flex-grow hover:bg-background focus:bg-background hover:text-primary focus:text-primary uppercase font-header font-bold lg:text-3xl">top bombs</button>
-                <button class="js-recent-bombs-btn flex justify-center items-center flex-grow hover:bg-background focus:bg-background hover:text-primary focus:text-primary uppercase font-header font-bold lg:text-3xl">recent bombs</button>
+                <button data-scroll-to="#recentBombsDesktop" class="js-recent-bombs-btn flex justify-center items-center flex-grow hover:bg-background focus:bg-background hover:text-primary focus:text-primary uppercase font-header font-bold lg:text-3xl">recent bombs</button>
                 <button class="js-genre-bombs-btn flex justify-center items-center flex-grow hover:bg-background focus:bg-background hover:text-primary focus:text-primary uppercase font-header font-bold lg:text-3xl">genre bombs</button>
                 <button class="js-all-bombs-btn flex justify-center items-center flex-grow hover:bg-background focus:bg-background hover:text-primary focus:text-primary uppercase font-header font-bold lg:text-3xl">all bombs</button>
             </div>
@@ -127,7 +127,7 @@
     </div>
 
     <!-- YOUR RECENT BOMBS DESKTOP VIEW -->
-    <div class="mt-10 mx-16 hidden lg:block">
+    <div id="recentBombsDesktop" class="mt-10 mx-16 hidden lg:block">
         <h1 class="uppercase text-background font-bold font-header text-5xl">your recent bombs</h1>
         <div class="ml-10 mt-5 h-1 w-7/12 bg-primary"></div>
     </div>

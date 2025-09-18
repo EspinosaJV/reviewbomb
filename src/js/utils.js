@@ -52,7 +52,7 @@ export function handleRecentBombsClick() {
     const allBombsMobileLandscape = document.getElementById('allBombsMobileLandscape');
 
     if (isDesktop.matches) {
-        console.log("Recent Bombs Button for the desktop view has been clicked!");
+        document.querySelector('#recentBombsDesktop').scrollIntoView({ behavior: 'smooth' });
     } else if (isMobilePortrait.matches) {
         recentBombsMobilePortrait.classList.add('portrait-display-flex');
         recentBombsMobilePortrait.classList.remove('hidden');
