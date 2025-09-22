@@ -91,7 +91,7 @@ export function handleGenreBombsClick() {
     const allBombsMobileLandscape = document.getElementById('allBombsMobileLandscape');
 
     if (isDesktop.matches) {
-        console.log("Genre Bombs Button in desktop view has been clicked!");
+        document.querySelector('#genreBombsDesktop').scrollIntoView({ behavior: 'smooth' });
     } else if (isMobilePortrait.matches) {
         genreBombsMobilePortrait.classList.add('portrait-display-flex');
         genreBombsMobilePortrait.classList.remove('hidden');
