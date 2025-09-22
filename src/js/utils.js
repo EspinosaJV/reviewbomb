@@ -177,7 +177,7 @@ export function handleAllBombsClick() {
     const allBombsMobileLandscape = document.getElementById('allBombsMobileLandscape');
 
     if (isDesktop.matches) {
-        console.log("All Bombs Button in the desktop view has been clicked!");
+        document.querySelector('#allBombsDesktop').scrollIntoView({ behavior: 'smooth' });
     } else if (isMobilePortrait.matches) {
         allBombsMobilePortrait.classList.add('portrait-display-flex');
         allBombsMobilePortrait.classList.remove('hidden');
