@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Document</title>
+    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
     <script type="module" src="js/app.js" defer></script> 
 </head>
 <body>
@@ -176,5 +177,73 @@
     <div id="allBombsMobileLandscape" class="hidden justify-center items-center mt-5">
         <h1 class="uppercase font-bold font-header text-[4rem]">all bombs</h1>
     </div>
+
+    <!-- SUBMIT BOMB REVIEW MICROMODAL -->
+    <div class="modal micromodal-slide is-open" id="modal-1" aria-hidden="false">
+        <div class="modal__overlay fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 hidden lg:flex items-start justify-center py-16 z-[100]" tabindex="-1" data-micromodal-close>
+            <div class="modal__container bg-foundation shadow-xl w-full max-w-md mx-auto overflow-hidden flex flex-col max-h-[85vh]" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+                <header class="modal__header flex justify-end pt-4 pr-4 shrink-0">
+                    <button class="modal__close p-1 border-2 border-background" aria-label="Close modal" data-micromodal-close>
+                        <svg xmlns="https://www.w3.org/2000/svg" class="h-6 w-6 text-primary hover:text-background focus:text-background active:text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </header>
+
+                <main class="modal__content pl-4 pt-2 pr-4 overflow-y-auto" id="modal-1-content">
+                    <h3 class="uppercase font-bold font-primary text-3xl font-header text-background">movie title</h3>
+                    <input class="font-body border-4 border-primary mt-1 w-full" type="text">
+                    <h3 class="uppercase font-bold font-primary text-3xl font-header text-background pt-3">bomb rating</h3>
+                    <!-- STAR RATING SECTION FOR DESKTOP MICROMODAL -->
+                    <div id="star-rating-container" class="flex items-center space-x-1 gap-4">
+                        <!-- STAR 1 -->
+                        <button class="star-btn" data-value="1" aria-label="Rate 1 star">
+                            <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                        </button>
+
+                        <!-- STAR 2 -->
+                        <button class="star-btn" data-value="2" aria-label="Rate 2 stars">
+                            <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                        </button>
+
+                        <!-- STAR 3 -->
+                        <button class="star-btn" data-value="3" aria-label="Rate 3 stars">
+                            <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                        </button>
+
+                        <!-- STAR 4 -->
+                        <button class="star-btn" data-value="4" aria-label="Rate 4 stars">
+                            <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                        </button>
+
+                        <!-- STAR 5-->
+                        <button class="star-btn" data-value="5" aria-label="Rate 5 stars">
+                            <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <h3 class="uppercase font-bold font-header text-3xl font-header text-background pt-3">your description</h3>
+                    <textarea id="reviewbomb-description-input" name="reviewbomb-description-input" placeholder="Why was it a bomb?" class="font-body border-4 border-primary mt-1 w-full h-20 p-2 placeholder:font-header placeholder:text-background"></textarea>
+
+                    <!-- STORE FINAL RATING VALUE -->
+                    <input type="hidden" name="rating" id="rating-value" value="0">
+                </main>
+
+                <footer class="modal__footer flex justify-center p-4 shrink-0">
+                    <button class="border-2 py-2 px-6 font-header uppercase font-bold border-background text-primary hover:text-background focus:text-background active:text-background">Submit</button>
+                </footer>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

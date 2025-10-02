@@ -43,3 +43,49 @@
         }
     }
 }
+
+.micromodal-title {
+    display: none;
+}
+
+.micromodal-slide.is-open {
+    display: block;
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__overlay {
+    animation: mm-fade-in 0.3s ease-in-out;
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__overlay {
+    animation: mm-fade-out 0.3s ease-in-out forwards;
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__container {
+    animation: mm-slidie-in 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__container {
+    animation: mm-slide-out 0.3s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes mm-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes mm-fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes mm-slide-in {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes mm-slide-out {
+    from { transform: translateY(0); opacity: 1; }
+    to {transform: translateY(-20px); opacity: 0; }
+}
+
+
