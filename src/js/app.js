@@ -3,6 +3,5 @@ import { headerEventListeners, showErrorModal, initializeStarRating } from './ui
 document.addEventListener('DOMContentLoaded', () => {
     headerEventListeners();
     initializeStarRating();
-
-    // MicroModal.init({ awaitCloseAnimation: true}); 
+    MicroModal.init({ awaitCloseAnimation: true}); 
 });
