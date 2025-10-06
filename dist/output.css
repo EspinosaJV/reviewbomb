@@ -1220,6 +1220,51 @@ video {
   color: rgb(15 23 42 / var(--tw-text-opacity));
 }
 
+.group.is-open .group-\[\.is-open\]\:fixed {
+  position: fixed;
+}
+
+.group.is-open .group-\[\.is-open\]\:bottom-0 {
+  bottom: 0px;
+}
+
+.group.is-open .group-\[\.is-open\]\:left-0 {
+  left: 0px;
+}
+
+.group.is-open .group-\[\.is-open\]\:right-0 {
+  right: 0px;
+}
+
+.group.is-open .group-\[\.is-open\]\:top-0 {
+  top: 0px;
+}
+
+.group.is-open .group-\[\.is-open\]\:z-50 {
+  z-index: 50;
+}
+
+.group.is-open .group-\[\.is-open\]\:flex {
+  display: flex;
+}
+
+.group.is-open .group-\[\.is-open\]\:items-center {
+  align-items: center;
+}
+
+.group.is-open .group-\[\.is-open\]\:justify-center {
+  justify-content: center;
+}
+
+.group.is-open .group-\[\.is-open\]\:bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.group.is-open .group-\[\.is-open\]\:bg-opacity-50 {
+  --tw-bg-opacity: 0.5;
+}
+
 @media (min-width: 1024px) {
   .lg\:block {
     display: block;

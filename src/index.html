@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../dist/output.css" rel="stylesheet">
+    <link href="https://unpkg.com/micromodal/dist/micromodal.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -42,7 +43,7 @@
     <!-- REVIEWBOMB BUTTON DESKTOP VIEW -->
     <div class="hidden lg:flex flex-row justify-center items-center mt-20">
         <img src="images/desktop_reviewbomb_button_right_facing_arrow.png" class="mr-4 w-6">
-        <button class="hover:bg-background focus:bg-background active:bg-background border-2 border-background uppercase py-2 px-8 text-2xl font-bold font-header text-primary">Reviewbomb!</button>
+        <button data-micromodal-trigger="modal-1" class="hover:bg-background focus:bg-background active:bg-background border-2 border-background uppercase py-2 px-8 text-2xl font-bold font-header text-primary">Reviewbomb!</button>
         <img src="images/desktop_reviewbomb_button_left_facing_arrow.png" class="ml-4 w-6">
     </div>
 
@@ -179,8 +180,8 @@
     </div>
 
     <!-- SUBMIT BOMB REVIEW MICROMODAL -->
-    <div class="modal micromodal-slide is-open" id="modal-1" aria-hidden="true">
-        <div class="modal__overlay fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 hidden lg:flex items-start justify-center py-16 z-[100]" tabindex="-1" data-micromodal-close>
+    <div class="modal micromodal-slide group" id="modal-1" aria-hidden="true">
+        <div class="modal__overlay group-[.is-open]:fixed group-[.is-open]:top-0 group-[.is-open]:left-0 group-[.is-open]:right-0 group-[.is-open]:bottom-0 group-[.is-open]:bg-black group-[.is-open]:bg-opacity-50 group-[.is-open]:flex group-[.is-open]:items-center group-[.is-open]:justify-center group-[.is-open]:z-50" tabindex="-1" data-micromodal-close>
             <div class="modal__container bg-foundation shadow-xl w-full max-w-md mx-auto overflow-hidden flex flex-col max-h-[85vh]" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
                 <header class="modal__header flex justify-end pt-4 pr-4 shrink-0">
                     <button class="modal__close p-1 border-2 border-background" aria-label="Close modal" data-micromodal-close>
