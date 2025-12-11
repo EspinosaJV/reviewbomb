@@ -595,6 +595,11 @@ video {
   z-index: 50;
 }
 
+.mx-10 {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
 .mx-14 {
   margin-left: 3.5rem;
   margin-right: 3.5rem;
@@ -809,10 +814,6 @@ video {
 
 .gap-10 {
   gap: 2.5rem;
-}
-
-.gap-2 {
-  gap: 0.5rem;
 }
 
 .gap-4 {
