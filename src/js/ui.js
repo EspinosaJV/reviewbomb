@@ -1,4 +1,5 @@
 import * as utils from './utils.js';
+import { getReviews } from './api.js';
 
 export function showErrorModal(message) {
     const modalContent = document.querySelector('#modal-1 .modal__content');
@@ -82,5 +83,51 @@ export function initializeStarRating() {
 
     starContainer.addEventListener('mouseout', () => {
         updateStars(currentRating);
+    });
+}
+
+export function renderTopBombs(){
+    const container = document.getElementById('desktop-top-bombs-container');
+    if (!container) return;
+
+    const reviews = getReviews();
+
+    const top3 = reviews.sort((a, b) => b.rating - a.rating).slice(0, 3);
+
+    container.innerHTML = '';
+
+    top3.forEach(review => {
+        let starsHtml = '';
+        for (let i = 1; i <= 5; i++) {
+            const color = i <= review.rating ? 'text-yellow-400' : 'text-gray-400';
+            starsHtml += `
+                <svg class="w-8 h-8 ${color}" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                </svg>`;
+        }
+        const cardHtml = `
+            <div class="mt-12 border border-background w-1/3 flex flex-col items-center">
+                <div>
+                    <h1 class="mt-5 uppercase font-header font-bold text-background text-3xl">${review.title}</h1>
+                </div>
+                <div class="mt-5 flex flex-row gap-4">${starsHtml}</div>
+                <div class="pb-4">
+                    <p class="px-4 mt-5 font-body text-background text-justify">${review.description}</p>
+                </div>
+            </div>`;
+
+        container.insertAdjacentHTML('beforeend', cardHtml);
+    });
+}
+
+// Helper to clear modal after submission of reviewbomb
+export function resetModalForm(){
+    document.getElementById('movie-title-input').value = '';
+    document.getElementById('reviewbomb-description-input').value = '';
+    document.getElementById('rating-value').value = '0';
+    const stars = document.querySelectorAll('#star-rating-container .star-btn svg');
+    stars.forEach(s => {
+        s.classList.remove('text-yellow-400');
+        s.classList.add('text-gray-400');
     });
 }
