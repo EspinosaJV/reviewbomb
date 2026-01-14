@@ -99,6 +99,7 @@ function createCardHtml(review) {
         <div class="mt-12 border border-background w-1/3 flex flex-col items-center">
             <div>
                 <h1 class="mt-5 uppercase font-header font-bold text-background text-3xl">${review.title}</h1>
+                <p class="text-center font-header font-bold text-primary uppercase text-sm">${review.genre}</p>
             </div>
             <div class="mt-5 flex flex-row gap-4">${starsHtml}</div>
             <div class="pb-4">
@@ -159,6 +160,7 @@ export function renderRecentBombs() {
 // Helper to clear modal after submission of reviewbomb
 export function resetModalForm(){
     document.getElementById('movie-title-input').value = '';
+    document.getElementById('movie-genre-input').selectedIndex = 0;
     document.getElementById('reviewbomb-description-input').value = '';
     document.getElementById('rating-value').value = '0';
     const stars = document.querySelectorAll('#star-rating-container .star-btn svg');

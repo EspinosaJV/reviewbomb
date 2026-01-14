@@ -12,17 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (submitBtn) {
         submitBtn.addEventListener('click', () => {
             const title = document.getElementById('movie-title-input').value;
+            const genre = document.getElementById('movie-genre-input').value;
             const rating = parseInt(document.getElementById('rating-value').value);
             const description = document.getElementById('reviewbomb-description-input').value;
 
-            if (!title || rating === 0) {
-                alert("Please enter a title and a star rating!");
+            if (!title || !genre || rating === 0) {
+                alert("Please enter a title, select a genre, and a star rating!");
                 return;
             }
 
             // Create the object
             const newReview = {
                 title: title,
+                genre: genre,
                 rating: rating,
                 description: description,
                 id: Date.now()

@@ -2004,8 +2004,24 @@
                 </header>
 
                 <main class="modal__content pl-4 pt-2 pr-4 overflow-y-auto" id="modal-1-content">
+                    <!-- MOVIE TITLE INPUT -->
                     <h3 class="uppercase font-bold font-primary text-3xl font-header text-background">movie title</h3>
                     <input id="movie-title-input" class="font-body border-4 border-primary mt-1 w-full" type="text">
+
+                    <!-- REVIEWBOMB GENRE INPUT -->
+                    <h3 class="uppercase font-bold font-primary text-3xl font-header text-background pt-3">genre</h3>
+                    <select id="movie-genre-input" class="font-body border-4 border-primary mt-1 w-full p-2 bg-foundation focus:outline-none">
+                        <option value="" disabled selected>Select Genre</option>
+                        <option value="Action">Action</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Sci-Fi">Sci-Fi</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Other">Other</option>
+                    </select> 
+
+                    <!-- STAR RATING INPUT -->
                     <h3 class="uppercase font-bold font-primary text-3xl font-header text-background pt-3">bomb rating</h3>
                     <!-- STAR RATING SECTION FOR DESKTOP MICROMODAL -->
                     <div id="star-rating-container" class="flex items-center space-x-1 gap-4">
@@ -2044,6 +2060,8 @@
                             </svg>
                         </button>
                     </div>
+
+                    <!-- REVIEW BOMB DESCRIPTION -->
                     <h3 class="uppercase font-bold font-header text-3xl font-header text-background pt-3">your description</h3>
                     <textarea id="reviewbomb-description-input" name="reviewbomb-description-input" placeholder="Why was it a bomb?" class="font-body border-4 border-primary mt-1 w-full h-20 p-2 placeholder:font-header placeholder:text-background"></textarea>
 
