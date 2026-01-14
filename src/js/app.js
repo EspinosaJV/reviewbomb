@@ -1,4 +1,4 @@
-import { headerEventListeners, showErrorModal, initializeStarRating, renderTopBombs, resetModalForm } from './ui.js';
+import { headerEventListeners, showErrorModal, initializeStarRating, renderTopBombs, renderRecentBombs, resetModalForm } from './ui.js';
 import { saveReview } from './api.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeStarRating();
     MicroModal.init({ awaitCloseAnimation: true}); 
     renderTopBombs();
+    renderRecentBombs();
 
     const submitBtn = document.getElementById('submit-bomb-btn');
     if (submitBtn) {
@@ -14,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const rating = parseInt(document.getElementById('rating-value').value);
             const description = document.getElementById('reviewbomb-description-input').value;
 
-            // Simple validation
             if (!title || rating === 0) {
                 alert("Please enter a title and a star rating!");
                 return;
@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             saveReview(newReview);
             renderTopBombs();
+            renderRecentBombs();
             resetModalForm();
             MicroModal.close('modal-1');
         });
