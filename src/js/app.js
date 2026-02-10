@@ -1,12 +1,25 @@
-import { headerEventListeners, showErrorModal, initializeStarRating, renderTopBombs, renderRecentBombs, resetModalForm } from './ui.js';
+import {
+    headerEventListeners,
+    showErrorModal,
+    initializeStarRating,
+    renderTopBombs,
+    renderRecentBombs,
+    renderGenreBombs,
+    initializeGenreFilter,
+    resetModalForm
+} from './ui.js';
+
 import { saveReview } from './api.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     headerEventListeners();
     initializeStarRating();
-    MicroModal.init({ awaitCloseAnimation: true}); 
+    MicroModal.init({ awaitCloseAnimation: true});
+
+    initializeGenreFilter();
     renderTopBombs();
     renderRecentBombs();
+    renderGenreBombs('All');
 
     const submitBtn = document.getElementById('submit-bomb-btn');
     if (submitBtn) {
@@ -21,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Create the object
             const newReview = {
                 title: title,
                 genre: genre,
@@ -31,8 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             saveReview(newReview);
+
             renderTopBombs();
             renderRecentBombs();
+            renderGenreBombs('All');
+
             resetModalForm();
             MicroModal.close('modal-1');
         });

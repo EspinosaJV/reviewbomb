@@ -169,3 +169,76 @@ export function resetModalForm(){
         s.classList.add('text-gray-400');
     });
 }
+
+export function initializeGenreFilter() {
+    const filterBtn = document.getElementById('genre-filter-btn');
+    const dropdown = document.getElementById('genre-filter-dropdown');
+    const options = document.querySelectorAll('.js-genre-option');
+
+    if (filterBtn && dropdown) {
+        filterBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!filterBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+    }
+
+    options.forEach(option => {
+        option.addEventListener('click', (e) => {
+            const selectedGenre = e.target.getAttribute('data-genre');
+            renderGenreBombs(selectedGenre);
+            dropdown.classList.add('hidden');
+        });
+    });
+}
+
+export function renderGenreBombs(filterGenre = 'All') {
+    const container = document.getElementById('desktop-genre-bombs-container');
+    if (!container) return;
+
+    const reviews = getReviews();
+
+    const filteredReviews = filterGenre === 'All'
+        ? reviews
+        : reviews.filter(review => review.genre === filterGenre);
+
+    container.innerHTML = '';
+
+    if (filteredReviews.length === 0) {
+        container.innerHTML = '<p class="font-header text-2xl text-background ml-12">No bombs found for ${filterGenre}.</p>';
+        return;
+    }
+
+    filteredReviews.slice().reverse().forEach(review => {
+        container.insertAdjacentHTML('beforeend', createGenreCardHtml(review));
+    });
+}
+
+// Internal helper for card HTML structure
+function createGenreCardHtml(review) {
+    let starsHtml = '';
+    for (let i = 1; i <= 5; i++) {
+        const color = i <= review.rating ? 'text-yellow-400' : 'text-gray-400';
+        starsHtml += `
+            <svg class="w-8 h-8 ${color}" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+            </svg>`;
+    }
+
+    return `
+        <div class="mt-12 border border-background w-1/3 flex flex-col items-center shrink-0">
+            <div>
+                <h1 class="mt-5 uppercase font-header font-bold text-background text-3xl">${review.title}</h1>
+                <p class="text-center font-header font-bold text-primary uppercase text-sm">${review.genre}</p>
+            </div>
+            <div class="mt-5 flex flex-row gap-4">${starsHtml}</div>
+            <div class="pb-4">
+                <p class="px-4 mt-5 font-body text-background text-justify">${review.description}</p>
+            </div>
+        </div>`;
+}
