@@ -6,6 +6,8 @@ import {
     renderRecentBombs,
     renderGenreBombs,
     initializeGenreFilter,
+    renderAllBombs,
+    initializeAllBombs,
     resetModalForm
 } from './ui.js';
 
@@ -14,12 +16,15 @@ import { saveReview } from './api.js';
 document.addEventListener('DOMContentLoaded', () => {
     headerEventListeners();
     initializeStarRating();
-    MicroModal.init({ awaitCloseAnimation: true});
+    MicroModal.init({ awaitCloseAnimation: true });
 
     initializeGenreFilter();
+    initializeAllBombs();
+
     renderTopBombs();
     renderRecentBombs();
     renderGenreBombs('All');
+    renderAllBombs();
 
     const submitBtn = document.getElementById('submit-bomb-btn');
     if (submitBtn) {
@@ -47,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderTopBombs();
             renderRecentBombs();
             renderGenreBombs('All');
+            renderAllBombs();
 
             resetModalForm();
             MicroModal.close('modal-1');

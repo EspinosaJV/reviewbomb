@@ -1,6 +1,8 @@
 import * as utils from './utils.js';
 import { getReviews } from './api.js';
 
+let isAllExpanded = false;
+
 export function showErrorModal(message) {
     const modalContent = document.querySelector('#modal-1 .modal__content');
     if (modalContent) {
@@ -237,12 +239,73 @@ function createGenreCardHtml(review) {
     return `
         <div class="mt-12 border border-background w-1/3 flex flex-col items-center">
             <div>
-                <h1 class="mt-5 uppercase font-header font-bold text-background texrt-3xl">${review.title}</h1>
+                <h1 class="mt-5 uppercase font-header font-bold text-background text-3xl">${review.title}</h1>
                 <p class="text-center font-header font-bold text-primary uppercase text-sm">${review.genre}</p>
             </div>
             <div class="mt-5 flex flex-row gap-4">${starsHtml}</div>
             <div class="pb-4">
                 <p class="px-4 mt-5 font-body text-background text-justify">${review.description}</p>
+            </div>
+        </div>`;
+}
+
+export function initializeAllBombs() {
+    const expandBtn = document.getElementById('expand-all-bombs-btn');
+
+    if (expandBtn) {
+        expandBtn.addEventListener('click', () => {
+            isAllExpanded = !isAllExpanded;
+
+            if (isAllExpanded) {
+                expandBtn.style.transform = 'rotate(180deg)';
+            } else {
+                expandBtn.style.transform = 'rotate(0deg)';
+            }
+
+            renderAllBombs();
+        });
+    }
+}
+
+export function renderAllBombs() {
+    const container = document.getElementById('desktop-all-bombs-container');
+    if (!container) return;
+
+    const reviews = getReviews();
+    const sortedReviews = reviews.slice().sort((a, b) => b.id - a.id);
+    const reviewsToShow = isAllExpanded ? sortedReviews : sortedReviews.slice(0, 3);
+
+    container.innerHTML = '';
+
+    if (reviewsToShow.length === 0) {
+        container.innerHTML = `<p class="font-header text-2xl text-background col-span-3 ml-12">No bombs recorded yet.</p>`;
+        return;
+    }
+
+    reviewsToShow.forEach(review => {
+        const cardHtml = createAllBombsCardHtml(review);
+        container.insertAdjacentHTML('beforeend', cardHtml);
+    });
+}
+
+function createAllBombsCardHtml(review) {
+    let starsHtml = '';
+    for (let i = 1; i <= 5; i++) {
+        const color = i <= review.rating ? 'text-yellow-400' : 'text-gray-400';
+        starsHtml += `
+            <svg class="w-8 h-8 ${color}" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+            </svg>`;
+    }
+
+    return `
+        <div class="mt-12 border border-background w-full flex flex-col items-center">
+            <div>
+                <h1 class="mt-5 uppercase font-header font-bold text-background text-3xl">${review.title}</h1>
+            </div>
+            <div class="mt-5 flex flex-row gap-4">${starsHtml}</div>
+            <div class="pb-4">
+                <p class="px-4 mt-5 font-body text-background text-justify">${review.description}</P>
             </div>
         </div>`;
 }
