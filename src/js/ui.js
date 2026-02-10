@@ -235,9 +235,9 @@ function createGenreCardHtml(review) {
     }
 
     return `
-        <div class="mt-12 border border-background w-1/3 flex flex-col items-center shrink-0">
+        <div class="mt-12 border border-background w-1/3 flex flex-col items-center">
             <div>
-                <h1 class="mt-5 uppercase font-header font-bold text-background text-3xl">${review.title}</h1>
+                <h1 class="mt-5 uppercase font-header font-bold text-background texrt-3xl">${review.title}</h1>
                 <p class="text-center font-header font-bold text-primary uppercase text-sm">${review.genre}</p>
             </div>
             <div class="mt-5 flex flex-row gap-4">${starsHtml}</div>
