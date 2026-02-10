@@ -203,18 +203,22 @@ export function renderGenreBombs(filterGenre = 'All') {
 
     const reviews = getReviews();
 
-    const filteredReviews = filterGenre === 'All'
+    let filteredReviews = filterGenre === 'All'
         ? reviews
         : reviews.filter(review => review.genre === filterGenre);
 
+    filteredReviews.sort((a, b) => b.rating - a.rating);
+
+    const top3 = filteredReviews.slice(0, 3);
+
     container.innerHTML = '';
 
-    if (filteredReviews.length === 0) {
-        container.innerHTML = '<p class="font-header text-2xl text-background ml-12">No bombs found for ${filterGenre}.</p>';
+    if (top3.length === 0) {
+        container.innerHTML = `<p class="font-header text-2xl text-background ml-12">No bombs found for ${filterGenre}.</p>`;
         return;
     }
 
-    filteredReviews.slice().reverse().forEach(review => {
+    top3.forEach(review => {
         container.insertAdjacentHTML('beforeend', createGenreCardHtml(review));
     });
 }
