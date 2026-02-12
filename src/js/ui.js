@@ -98,7 +98,7 @@ function createCardHtml(review) {
             </svg>`;
     }
     return `
-        <div class="mt-12 border border-background w-1/3 flex flex-col items-center relative group">
+        <div class="mt-12 border border-background w-full flex flex-col items-center relative group">
             <button class="js-delete-bomb-btn absolute top-5 right-5 text-primary hover:text-black transition-colors duration-200" data-id="${review.id}" aria-label="Delete review">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -135,7 +135,7 @@ export function renderTopBombs(){
         }
 
         const cardHtml = `
-            <div class="mt-12 border border-background w-1/3 flex flex-col items-center relative group">
+            <div class="mt-12 border border-background w-full flex flex-col items-center relative group">
                 <button class="js-delete-bomb-btn absolute top-5 right-5 text-primary hover:text-black transition-colors duration-200" data-id="${review.id}" aria-label="Delete review">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -249,7 +249,7 @@ function createGenreCardHtml(review) {
     }
 
     return `
-        <div class="mt-12 border border-background w-1/3 flex flex-col items-center relative group">
+        <div class="mt-12 border border-background w-full flex flex-col items-center relative group">
             <button class="js-delete-bomb-btn absolute top-5 right-5 text-primary hover:text-black transition-colors duration-200" data-id="${review.id}" aria-label="Delete review">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
