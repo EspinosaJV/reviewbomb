@@ -8,3 +8,9 @@ export function getReviews() {
     // This gets the string from storage and turns it back into a Javascript array
     return JSON.parse(localStorage.getItem('reviewBombs')) || [];
 }
+
+export function deleteReview(id) {
+    let reviews = getReviews();
+    reviews = reviews.filter(review => review.id !== id);
+    localStorage.setItem('reviewBombs', JSON.stringify(reviews));
+}

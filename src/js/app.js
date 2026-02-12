@@ -8,7 +8,8 @@ import {
     initializeGenreFilter,
     renderAllBombs,
     initializeAllBombs,
-    resetModalForm
+    resetModalForm,
+    setupGlobalDeleteListener
 } from './ui.js';
 
 import { saveReview } from './api.js';
@@ -20,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initializeGenreFilter();
     initializeAllBombs();
+
+    setupGlobalDeleteListener();
 
     renderTopBombs();
     renderRecentBombs();
