@@ -8,6 +8,7 @@ import {
     initializeGenreFilter,
     renderAllBombs,
     initializeAllBombs,
+    initializeModalGenreDropdown,
     resetModalForm,
     setupGlobalDeleteListener
 } from './ui.js';
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initializeGenreFilter();
     initializeAllBombs();
+    initializeModalGenreDropdown();
 
     setupGlobalDeleteListener();
 

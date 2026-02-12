@@ -1577,7 +1577,7 @@
     <!-- SUBMIT BOMB REVIEW MICROMODAL -->
     <div class="modal micromodal-slide group" id="modal-1" aria-hidden="true">
         <div class="modal__overlay group-[.is-open]:fixed group-[.is-open]:top-0 group-[.is-open]:left-0 group-[.is-open]:right-0 group-[.is-open]:bottom-0 group-[.is-open]:bg-black group-[.is-open]:bg-opacity-50 group-[.is-open]:flex group-[.is-open]:items-center group-[.is-open]:justify-center group-[.is-open]:z-50" tabindex="-1" data-micromodal-close>
-            <div class="modal__container border-4 border-primary bg-foundation shadow-xl w-full max-w-md mx-auto overflow-hidden flex flex-col max-h-[85vh]" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+            <div class="modal__container border-4 border-primary bg-foundation shadow-xl w-full max-w-md mx-auto flex flex-col" role="dialog" aria-model="true" aria-labelledby="modal-1-title">
                 <header class="modal__header flex justify-end pt-4 pr-4 shrink-0">
                     <button class="modal__close p-1 border-2 border-background" aria-label="Close modal" data-micromodal-close>
                         <svg xmlns="https://www.w3.org/2000/svg" class="h-6 w-6 text-primary hover:text-background focus:text-background active:text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1586,23 +1586,37 @@
                     </button>
                 </header>
 
-                <main class="modal__content pl-4 pt-2 pr-4 overflow-y-auto" id="modal-1-content">
+                <main class="modal__content pl-4 pt-2 pr-4 overflow-visible" id="modal-1-content">
                     <!-- MOVIE TITLE INPUT -->
                     <h3 class="uppercase font-bold font-primary text-3xl font-header text-background">movie title</h3>
                     <input id="movie-title-input" class="font-body border-4 border-primary mt-1 w-full p-2" type="text">
 
                     <!-- REVIEWBOMB GENRE INPUT -->
                     <h3 class="uppercase font-bold font-primary text-3xl font-header text-background pt-3">genre</h3>
-                    <select id="movie-genre-input" class="font-body border-4 border-primary mt-1 w-full p-2 bg-foundation focus:outline-none">
-                        <option value="" disabled selected>Select Genre</option>
-                        <option value="Action">Action</option>
-                        <option value="Comedy">Comedy</option>
-                        <option value="Drama">Drama</option>
-                        <option value="Horror">Horror</option>
-                        <option value="Sci-Fi">Sci-Fi</option>
-                        <option value="Thriller">Thriller</option>
-                        <option value="Other">Other</option>
-                    </select> 
+
+                    <div class="relative w-full mt-1">
+                        <button id="modal-genre-btn" class="w-full border-4 border-primary p-2 flex justify-between items-center bg-foundation font-header font-bold uppercase text-background focus:outline-none">
+                            <span id="modal-genre-text">Select Genre</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div id="modal-genre-list" class="hidden absolute w-full bg-foundation border-4 border-t-0 border-primary z-50">
+                            <ul class="font-header font-bold uppercase cursor-pointer">
+                                <li class="js-modal-genre-option p-2 hover:bg-background hover:text-primary border-b-2 border-primary" data-value="Action">Action</li>
+                                <li class="js-modal-genre-option p-2 hover:bg-background hover:text-primary border-b-2 border-primary" data-value="Comedy">Comedy</li>
+                                <li class="js-modal-genre-option p-2 hover:bg-background hover:text-primary border-b-2 border-primary" data-value="Drama">Drama</li>
+                                <li class="js-modal-genre-option p-2 hover:bg-background hover:text-primary border-b-2 border-primary" data-value="Horror">Horror</li>
+                                <li class="js-modal-genre-option p-2 hover:bg-background hover:text-primary border-b-2 border-primary" data-value="Sci-Fi">Sci-Fi</li>
+                                <li class="js-modal-genre-option p-2 hover:bg-background hover:text-primary border-b-2 border-primary" data-value="Thriller">Thriller</li>
+                                <li class="js-modal-genre-option p-2 hover:bg-background hover:text-primary border-b-2 border-primary" data-value="Other">Other</li>
+                            </ul>
+                        </div>
+
+                        <input type="hidden" id="movie-genre-input" value="">
+                    </div>
+                    
 
                     <!-- STAR RATING INPUT -->
                     <h3 class="uppercase font-bold font-primary text-3xl font-header text-background pt-3">bomb rating</h3>

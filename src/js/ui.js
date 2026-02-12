@@ -174,9 +174,12 @@ export function renderRecentBombs() {
 // Helper to clear modal after submission of reviewbomb
 export function resetModalForm(){
     document.getElementById('movie-title-input').value = '';
-    document.getElementById('movie-genre-input').selectedIndex = 0;
+    document.getElementById('movie-genre-input').value = '';
+    document.getElementById('modal-genre-text').textContent = 'Select Genre';
+    document.getElementById('modal-genre-list').classList.add('hidden');
     document.getElementById('reviewbomb-description-input').value = '';
     document.getElementById('rating-value').value = '0';
+
     const stars = document.querySelectorAll('#star-rating-container .star-btn svg');
     stars.forEach(s => {
         s.classList.remove('text-yellow-400');
@@ -354,4 +357,38 @@ export function setupGlobalDeleteListener() {
             renderAllBombs();
         }
     });
+}
+
+export function initializeModalGenreDropdown() {
+    const btn = document.getElementById('modal-genre-btn');
+    const list = document.getElementById('modal-genre-list');
+    const textSpan = document.getElementById('modal-genre-text');
+    const hiddenInput = document.getElementById('movie-genre-input');
+    const options = document.querySelectorAll('.js-modal-genre-option');
+
+    if (btn && list) {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            list.classList.toggle('hidden');
+        });
+
+        options.forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const value = e.target.getAttribute('data-value');
+                const text = e.target.textContent;
+
+                textSpan.textContent = text;
+                hiddenInput.value = value;
+                list.classList.add('hidden');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!btn.contains(e.target) && !list.contains(e.target)) {
+                list.classList.add('hidden');
+            }
+        });
+    }
 }
