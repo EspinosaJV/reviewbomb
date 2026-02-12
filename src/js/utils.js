@@ -113,27 +113,35 @@ export function handleGenreBombsClick() {
     }
 }
 
-export function handleMenuDropdownClick() {
+export function handleMenuDropdownClick(event) {
+    if (event) event.stopPropagation();
+
     const isDesktop = window.matchMedia('(min-width: 1024px)');
-    const isMobilePortrait = window.matchMedia('(max-width: 1023px) and (orientation: portrait)');
-    const isMobileLandscape = window.matchMedia('(max-width: 1023px) and (orientation: landscape)');
-    
+    const isMobilePortrait = window.matchMedia('(max-width: 1023px) and (orientation:portrait)');
+    const isMobileLandscape = window.matchMedia('(max-width: 1023px) and (orientation:landscape)');
+
     const reviewBombNavigationMenuContainer = document.getElementById('reviewbomb-navigation-menu');
     const reviewBombNavigationMenuContainerMobilePortrait = document.getElementById('reviewbomb-navigation-menu-mobile-portrait');
-    const isContainerHidden = reviewBombNavigationMenuContainer.classList.contains('hidden');
     const reviewBombHeroSection = document.getElementById('reviewbomb-hero-section-mobile-portrait');
     const reviewBombCallToActionSection = document.getElementById('reviewbomb-call-to-action-section-mobile-portrait');
-    const reviewBombHeaderBanner = document.getElementById('reviewbomb-header');
 
     if (isDesktop.matches || isMobileLandscape.matches) {
-        reviewBombNavigationMenuContainer.classList.toggle('hidden');
+        reviewBombNavigationMenuContainer.classList.toggle('invisible');
+        reviewBombNavigationMenuContainer.classList.toggle('visible');
+        reviewBombNavigationMenuContainer.classList.toggle('opacity-0');
+        reviewBombNavigationMenuContainer.classList.toggle('opacity-100');
+
+        reviewBombNavigationMenuContainer.classList.toggle('scale-95');
+        reviewBombNavigationMenuContainer.classList.toggle('scale-100');
+        reviewBombNavigationMenuContainer.classList.toggle('-translate-y-2');
+        reviewBombNavigationMenuContainer.classList.toggle('translate-y-0');
     } else if (isMobilePortrait.matches) {
         reviewBombNavigationMenuContainerMobilePortrait.classList.toggle('hidden');
         reviewBombHeroSection.classList.toggle('hidden');
         reviewBombCallToActionSection.classList.toggle('hidden');
 
         convertMobileHeaderBannerToButton();
-    }   
+    }
 }
 
 export function convertMobileHeaderBannerToButton() {

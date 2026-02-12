@@ -45,6 +45,16 @@ export function headerEventListeners() {
     })
 
     reviewBombHeaderMobileButton.addEventListener('click', utils.closeMobileNavigationMenu);
+
+    document.addEventListener('click', (e) => {
+        const menu = document.getElementById('reviewbomb-navigation-menu');
+        const btn = document.querySelector('.js-reviewbomb-menu-btn');
+
+        if (menu && menu.classList.contains('visible') && !menu.contains(e.target) && !btn.contains(e.target)) {
+            menu.classList.remove('visible', 'opacity-100', 'scale-100', 'translate-y-0');
+            menu.classList.add('invisible', 'opacity-0', 'scale-95', '-translate-y-2');
+        }
+    });
 }
 
 export function initializeStarRating() {
