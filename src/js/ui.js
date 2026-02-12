@@ -49,10 +49,21 @@ export function headerEventListeners() {
     document.addEventListener('click', (e) => {
         const menu = document.getElementById('reviewbomb-navigation-menu');
         const btn = document.querySelector('.js-reviewbomb-menu-btn');
+        const icon = document.getElementById('hamburger-icon');
 
-        if (menu && menu.classList.contains('visible') && !menu.contains(e.target) && !btn.contains(e.target)) {
-            menu.classList.remove('visible', 'opacity-100', 'scale-100', 'translate-y-0');
+        if (menu && !menu.classList.contains('invisible') && !menu.contains(e.target) && !btn.contains(e.target)) {
             menu.classList.add('invisible', 'opacity-0', 'scale-95', '-translate-y-2');
+            menu.classList.remove('visible', 'opacity-100', 'scale-100', 'translate-y-0');
+
+            const line1 = document.getElementById('line-1');
+            const line2 = document.getElementById('line-2');
+            const line3 = document.getElementById('line-3');
+
+            if (line1 && line2 && line3) {
+                line1.classList.remove('rotate-45', 'translate-y-2.5');
+                line2.classList.remove('opacity-0');
+                line3.classList.remove('-rotate-45', '-translate-y-2.5');
+            }
         }
     });
 }

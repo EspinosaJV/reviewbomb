@@ -120,26 +120,38 @@ export function handleMenuDropdownClick(event) {
     const isMobilePortrait = window.matchMedia('(max-width: 1023px) and (orientation:portrait)');
     const isMobileLandscape = window.matchMedia('(max-width: 1023px) and (orientation:landscape)');
 
-    const reviewBombNavigationMenuContainer = document.getElementById('reviewbomb-navigation-menu');
-    const reviewBombNavigationMenuContainerMobilePortrait = document.getElementById('reviewbomb-navigation-menu-mobile-portrait');
-    const reviewBombHeroSection = document.getElementById('reviewbomb-hero-section-mobile-portrait');
-    const reviewBombCallToActionSection = document.getElementById('reviewbomb-call-to-action-section-mobile-portrait');
+    const menu = document.getElementById('reviewbomb-navigation-menu');
+    const mobileMenu = document.getElementById('reviewbomb-navigation-menu-mobile-portrait');
+    const hero = document.getElementById('reviewbomb-hero-section=mobile-portrait');
+    const cta = document.getElementById('reviewbomb-call-to-action-section-mobile-portrait');
+
+    const line1 = document.getElementById('line-1');
+    const line2 = document.getElementById('line-2');
+    const line3 = document.getElementById('line-3');
 
     if (isDesktop.matches || isMobileLandscape.matches) {
-        reviewBombNavigationMenuContainer.classList.toggle('invisible');
-        reviewBombNavigationMenuContainer.classList.toggle('visible');
-        reviewBombNavigationMenuContainer.classList.toggle('opacity-0');
-        reviewBombNavigationMenuContainer.classList.toggle('opacity-100');
+        menu.classList.toggle('invisible');
+        menu.classList.toggle('visible');
+        menu.classList.toggle('opacity-0');
+        menu.classList.toggle('opacity-100');
+        menu.classList.toggle('scale-95');
+        menu.classList.toggle('scale-100');
+        menu.classList.toggle('-translate-y-2');
+        menu.classList.toggle('translate-y-0');
 
-        reviewBombNavigationMenuContainer.classList.toggle('scale-95');
-        reviewBombNavigationMenuContainer.classList.toggle('scale-100');
-        reviewBombNavigationMenuContainer.classList.toggle('-translate-y-2');
-        reviewBombNavigationMenuContainer.classList.toggle('translate-y-0');
+        if (line1 && line2 && line3) {
+            line1.classList.toggle('rotate-45');
+            line1.classList.toggle('translate-y-2.5');
+
+            line2.classList.toggle('opacity-0');
+
+            line3.classList.toggle('-rotate-45');
+            line3.classList.toggle('-translate-y-2.5');
+        }
     } else if (isMobilePortrait.matches) {
-        reviewBombNavigationMenuContainerMobilePortrait.classList.toggle('hidden');
-        reviewBombHeroSection.classList.toggle('hidden');
-        reviewBombCallToActionSection.classList.toggle('hidden');
-
+        mobileMenu.classList.toggle('hidden');
+        hero.classList.toggle('hidden');
+        cta.classList.toggle('hidden');
         convertMobileHeaderBannerToButton();
     }
 }
