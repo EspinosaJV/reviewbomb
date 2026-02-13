@@ -119,8 +119,8 @@ function createCardHtml(review) {
             </svg>`;
     }
     return `
-        <div class="mt-12 border border-background w-full flex flex-col items-center relative group">
-            <button class="js-delete-bomb-btn absolute top-5 right-5 text-primary hover:text-black transition-colors duration-200" data-id="${review.id}" aria-label="Delete review">
+        <div class="animate-enter mt-12 border border-background w-full flex flex-col items-center relative group transition-all duration-=300">
+            <button class="js-delete-bomb-btn absolute top-5 right-5 text-primary hover:text-red-600 transition-colors duration-200" data-id="${review.id}" aria-label="Delete review">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -132,10 +132,11 @@ function createCardHtml(review) {
             </div>
             <div class="mt-5 flex flex-row gap-4">${starsHtml}</div>
             <div class="pb-4">
-                <p class=px-4 mt-5 font-body text-background text-justify">${review.description}</p>
+                <p class="px-4 mt-5 font-body text-background text-justify">${review.description}</p>
             </div>
         </div>`;
 }
+
 export function renderTopBombs(){
     const container = document.getElementById('desktop-top-bombs-container');
     if (!container) return;
@@ -273,10 +274,10 @@ function createGenreCardHtml(review) {
     }
 
     return `
-        <div class="mt-12 border border-background w-full flex flex-col items-center relative group">
-            <button class="js-delete-bomb-btn absolute top-5 right-5 text-primary hover:text-black transition-colors duration-200" data-id="${review.id}" aria-label="Delete review">
+        <div class="animate-enter mt-12 border border-background w-full flex flex-col items-center relative group transition-all duration=300">
+            <button class="js-delete-bomb-btn absolute top-5 right-5 text-primary hover:text-red-600 transition-colors duration-200" data-id="${review.id}" aria-label="Delete review">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    <path stroke-linecap="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
 
@@ -343,9 +344,9 @@ function createAllBombsCardHtml(review) {
         }
 
         return `
-            <div class="mt-12 border border-background w-full flex flex-col items-center relative group">
-                <button class="js-delete-bomb-btn absolute top-5 right-5 text-primary hover:text-black transition-colors duration-200" data-id="${review.id}" aria-label="Delete review">
-                    <svg xmlns="http://wwww.w3.org/2000/svg" class="h-8 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <div class="animate-enter mt-12 border border-background w-full flex flex-col items-center relative group transition-all duration-300">
+                <button class="js-delete-bomb-btn absolute top-5 right-5 text-primary hover:text-red-600 transition-colors duration-200" data-id="${review.id}" aria-label="Delete review">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
@@ -356,7 +357,7 @@ function createAllBombsCardHtml(review) {
                 </div>
                 <div class="mt-5 flex flex-row gap-4">${starsHtml}</div>
                 <div class="pb-4">
-                    <p class="px-4 mt-5 font-body text-background text-justify">${review.description}</p>
+                    <p class="px-4 mt-5 font-body text-background text-justify">$${review.description}</p>
                 </div>
             </div>`;
     }
@@ -367,19 +368,26 @@ export function setupGlobalDeleteListener() {
     document.addEventListener('click', (e) => {
         const btn = e.target.closest('.js-delete-bomb-btn');
 
-        if (btn) {
+        if(btn) {
+            const card = btn.closest('.group');
             const id = parseInt(btn.dataset.id);
 
-            deleteReview(id);
+            if (card) {
+                card.classList.add('animate-exit');
 
-            renderTopBombs();
-            renderRecentBombs();
-            renderGenreBombs('All');
-            renderAllBombs();
+                setTimeout(() => {
+                    deleteReview(id);
+
+                    renderTopBombs();
+                    renderRecentBombs();
+
+                    renderGenreBombs('All');
+                    renderAllBombs();
+                }, 300);
+            }
         }
     });
 }
-
 export function initializeModalGenreDropdown() {
     const btn = document.getElementById('modal-genre-btn');
     const list = document.getElementById('modal-genre-list');
