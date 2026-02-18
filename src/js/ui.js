@@ -138,58 +138,53 @@ function createCardHtml(review) {
 }
 
 export function renderTopBombs(){
-    const container = document.getElementById('desktop-top-bombs-container');
-    if (!container) return;
+    const containers = [
+        document.getElementById('desktop-top-bombs-container'),
+        document.getElementById('mobile-portrait-top-bombs-container'),
+        document.getElementById('mobile-landscape-top-bombs-container')
+    ];
 
     const reviews = getReviews();
     const top3 = reviews.sort((a, b) => b.rating - a.rating).slice(0, 3);
 
-    container.innerHTML = '';
+    containers.forEach(container => {
+        if (!container) return;
 
-    top3.forEach(review => {
-        let starsHtml = '';
-        for (let i = 1; i <= 5; i++) {
-            const color = i <= review.rating ? 'text-yellow-400' : 'text-gray-400';
-            starsHtml += `
-                <svg class="w-8 h-8 ${color}" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                </svg>`;
+        container.innerHTML = '';
+
+        if (top3.length === 0) {
+            container.innerHTML = `<p class="font-header text-xl text-background text-center mt-5">No top bombs yet.</p>`;
+            return;
         }
 
-        const cardHtml = `
-            <div class="mt-12 border border-background w-full flex flex-col items-center relative group">
-                <button class="js-delete-bomb-btn absolute top-5 right-5 text-primary hover:text-black transition-colors duration-200" data-id="${review.id}" aria-label="Delete review">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-
-                <div>
-                    <h1 class="mt-5 uppercase font-header font-bold text-background text-3xl">${review.title}</h1>
-                    <p class="text-center font-header font-bold text-primary uppercase text-sm">${review.genre}</p>
-                </div>
-                <div class="mt-5 flex flex-row gap-4">${starsHtml}</div>
-                <div class="pb-4">
-                    <p class="px-4 mt-5 font-body text-background text-justify">${review.description}</p>
-                </div>
-            </div>`;
-        
-        container.insertAdjacentHTML('beforeend', cardHtml);
+        top3.forEach(review => {
+            container.insertAdjacentHTML('beforeend', createCardHtml(review));
+        });
     });
 }
 
 export function renderRecentBombs() {
-    const container = document.getElementById('desktop-recent-bombs-container');
-    if (!container) return;
+    const containers = [
+        document.getElementById('desktop-recent-bombs-container'),
+        document.getElementById('mobile-portrait-recent-bombs-container'),
+        document.getElementById('mobile-landscape-recent-bombs-container')
+    ];
+
     const reviews = getReviews();
-
-    // Sort reviews by ID as we used Date.now as the values for ID
-
     const recent3 = reviews.sort((a, b) => b.id - a.id).slice(0, 3);
 
-    container.innerHTML = '';
-    recent3.forEach(review => {
-        container.insertAdjacentHTML('beforeend', createCardHtml(review));
+    containers.forEach(container => {
+        if (!container) return;
+        container.innerHTML = '';
+
+        if (recent3.length === 0) {
+            container.innerHTML = `<p class="font-header text-xl text-background text-center mt-5">No recent bombs.</p>`;
+            return;
+        }
+
+        recent3.forEach(review => {
+            container.insertAdjacentHTML('beforeend', createCardHtml(review));
+        });
     });
 }
 
@@ -237,29 +232,34 @@ export function initializeGenreFilter() {
 }
 
 export function renderGenreBombs(filterGenre = 'All') {
-    const container = document.getElementById('desktop-genre-bombs-container');
-    if (!container) return;
+    const containers = [
+        document.getElementById('desktop-genre-bombs-container'),
+        document.getElementById('mobile-portrait-genre-bombs-container'),
+        document.getElementById('mobile-landscape-genre-bombs-container')
+    ];
 
     const reviews = getReviews();
 
     let filteredReviews = filterGenre === 'All'
         ? reviews
         : reviews.filter(review => review.genre === filterGenre);
+    
+        filteredReviews.sort((a, b) => b.rating - a.rating);
+        const top3 = filteredReviews.slice(0, 3);
 
-    filteredReviews.sort((a, b) => b.rating - a.rating);
+        containers.forEach(container => {
+            if (!container) return;
+            container.innerHTML = '';
 
-    const top3 = filteredReviews.slice(0, 3);
+            if (top3.length === 0) {
+                container.innerHTML = `<p class="font-header text-xl text-background col-span-3 text-center mt-5">No bombs found for ${filterGenre}.</p>`;
+                return;
+            }
 
-    container.innerHTML = '';
-
-    if (top3.length === 0) {
-        container.innerHTML = `<p class="font-header text-2xl text-background ml-12">No bombs found for ${filterGenre}.</p>`;
-        return;
-    }
-
-    top3.forEach(review => {
-        container.insertAdjacentHTML('beforeend', createGenreCardHtml(review));
-    });
+            top3.forEach(review => {
+                container.insertAdjacentHTML('beforeend', createGenreCardHtml(review));
+            });
+        });
 }
 
 // Internal helper for card HTML structure
@@ -311,23 +311,29 @@ export function initializeAllBombs() {
 }
 
 export function renderAllBombs() {
-    const container = document.getElementById('desktop-all-bombs-container');
-    if (!container) return;
+    const containers = [
+        document.getElementById('desktop-all-bombs-container'),
+        document.getElementById('mobile-portrait-all-bombs-container'),
+        document.getElementById('mobile-landscape-all-bombs-container')
+    ];
 
     const reviews = getReviews();
     const sortedReviews = reviews.slice().sort((a, b) => b.id - a.id);
+
     const reviewsToShow = isAllExpanded ? sortedReviews : sortedReviews.slice(0, 3);
 
-    container.innerHTML = '';
+    containers.forEach(container => {
+        if (!container) return;
+        container.innerHTML = '';
 
-    if (reviewsToShow.length === 0) {
-        container.innerHTML = `<p class="font-header text-2xl text-background col-span-3 ml-12">No bombs recorded yet.</p>`;
-        return;
-    }
+        if (reviewsToShow.length === 0) {
+            container.innerHTML = `<p class="font-header text-xl text-background col-span-3 text-center mt-5">No bombs recorded yet.</p>`;
+            return;
+        }
 
-    reviewsToShow.forEach(review => {
-        const cardHtml = createAllBombsCardHtml(review);
-        container.insertAdjacentHTML('beforeend', cardHtml);
+        reviewsToShow.forEach(review => {
+            container.insertAdjacentHTML('beforeend', createAllBombsCardHtml(review));
+        });
     });
 }
 
