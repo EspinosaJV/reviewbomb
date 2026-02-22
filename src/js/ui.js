@@ -153,7 +153,7 @@ export function renderTopBombs(){
         container.innerHTML = '';
 
         if (top3.length === 0) {
-            container.innerHTML = `<p class="font-header text-xl text-background text-center mt-5">No top bombs yet.</p>`;
+            container.innerHTML = `<p class="font-header text-xl text-background col-span-3 text-center mt-5">No top bombs yet.</p>`;
             return;
         }
 
@@ -178,7 +178,7 @@ export function renderRecentBombs() {
         container.innerHTML = '';
 
         if (recent3.length === 0) {
-            container.innerHTML = `<p class="font-header text-xl text-background text-center mt-5">No recent bombs.</p>`;
+            container.innerHTML = `<p class="font-header text-xl text-background col-span-3 text-center mt-5">No recent bombs.</p>`;
             return;
         }
 
